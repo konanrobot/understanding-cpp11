@@ -4,24 +4,29 @@
 #include "pod_test.h"
 #include "initializer_test.h"
 #include "lambda_test.h"
+#include "gtest/gtest.h"
 
 USING_NS_ELLOOP;
 
-#define TEST(x) do { delete (new (x))->run(); } while (0);
-int main() {
+#define ELLOOP_TEST(x) do { delete (new (x))->run(); } while (0);
+int main(int argc, char** argv) {
 
-	TEST(LambdaTest);
+    // use gtest.
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 
-	//TEST(PodTest);
+	//ELLOOP_TEST(LambdaTest);
+
+	//ELLOOP_TEST(PodTest);
 
 	// InitializerTest it({1, 2, 3});
 
-	// TEST(InitializerTest);
-	// TEST(ConstructorTest);
+	// ELLOOP_TEST(InitializerTest);
+	// ELLOOP_TEST(ConstructorTest);
 
-	// TEST(ThreadTest);
+	// ELLOOP_TEST(ThreadTest);
 
-	// TEST(Compatibility);
+	// ELLOOP_TEST(Compatibility);
 
-	return 0;
+	//return 0;
 }

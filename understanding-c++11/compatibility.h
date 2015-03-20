@@ -32,7 +32,7 @@ class Compatibility : public Messi {
     private:
     // local init.
     int i_ = 0;
-    float f_{1.1};
+    float f_ {1.1f};
 
     // new friend grammer.
     friend Printer<Compatibility>; 

@@ -17,7 +17,7 @@ class ConstructorTest : public Messi {
       }
     }
 
-    // deleagte constructor 1.
+    // delegate constructor 1.
     ConstructorTest(int i) try : ConstructorTest() {
       i_ = i;
     }
@@ -25,7 +25,7 @@ class ConstructorTest : public Messi {
       pln("catch exception in ConstructorTest().");
     }
 
-    // deleagte constructor 2.
+    // delegate constructor 2.
     ConstructorTest(int i, float f) : ConstructorTest(i) {
       f_ = f;
     }
@@ -53,7 +53,7 @@ class ConstructorTest : public Messi {
     }
 
     int i_ = 1;
-    float f_ {1.111};
+    float f_ {1.111f};
     float distance_ = 0;
 };
 
