@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="compatibility.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="constructor_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="pod_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="thread_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="lambda_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="macro_define.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="compatibility.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="constructor_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="initializer_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="pod_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="thread_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="messi.h" />
+    <ClInclude Include="print_util.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="lambda_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{79adee78-6b3d-4d8d-9e54-7a0fd8b1099a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c++11">
+      <UniqueIdentifier>{f0fb3859-0261-44c5-a9ec-b6687931184a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
