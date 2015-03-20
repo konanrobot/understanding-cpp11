@@ -14,6 +14,7 @@ public:
 	virtual LambdaTest* run() override;
 
 	void simple1();
+	void simpleUsingCapture();
 };
 
 
