@@ -1,5 +1,5 @@
 # understanding-cpp11
-c++ program examples using c++11. Partily use the gtest framework.
+c++ program examples using c++11. Partly use the gtest framework.
 
 
 #License

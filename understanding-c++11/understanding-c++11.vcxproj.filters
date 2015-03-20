@@ -14,7 +14,12 @@
     <ClCompile Include="thread_test.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
-    <ClCompile Include="lambda_test.cpp" />
+    <ClCompile Include="initializer_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="lambda_test.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">

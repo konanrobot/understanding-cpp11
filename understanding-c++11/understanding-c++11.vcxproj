@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClCompile Include="compatibility.cpp" />
     <ClCompile Include="constructor_test.cpp" />
+    <ClCompile Include="initializer_test.cpp" />
     <ClCompile Include="lambda_test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pod_test.cpp" />
