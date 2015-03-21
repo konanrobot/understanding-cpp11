@@ -12,6 +12,23 @@ Person operator "" _person(const char * name, int age) {
 
 
 TEST(UserDefineLiteral, Construct) {
+    Person p("lionel", 10);
+    EXPECT_EQ(10, p.age());
+    EXPECT_EQ(0, strcmp("lionel", p.name()));
+    p.setName("hello");
+    EXPECT_EQ(0, strcmp("hello", p.name()));
+    p.setName("");
+    EXPECT_EQ(0, strcmp("", p.name()));
+    p.setName("ok");
+    p.setName(nullptr);
+    EXPECT_EQ(0, strcmp("ok", p.name()));
+    p.setName(p.name());
+    EXPECT_EQ(0, strcmp("ok", p.name()));
+    
+    Person p2("fine", 10);
+    p.setName(p2.name());
+    EXPECT_EQ(0, strcmp("fine", p.name()));
+    EXPECT_EQ(0, strcmp(p.name(), p2.name()));
 
 }
 
