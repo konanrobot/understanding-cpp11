@@ -51,4 +51,35 @@ private:
     std::vector<int> data_;
 };
 
+//--------------------------- type convert test ---------------------------
+class ConvertToInt {
+public:
+    int operator() () {
+        return 10;
+    }
+};
+
+class A {};
+class B {};
+class CanBeAB {
+public:
+    // operator () overload.
+    A operator() () {
+        pln("operator () called!");
+        return A();
+    }
+    // custom convert operator.
+    operator A() {
+        pln("operator A() called!");
+        return A();
+    }
+    // custom convert operator.
+    explicit operator B() {
+        pln("operator B() called!");
+        return B();
+    }
+};
+void funcA(A a);
+void funcB(B b);
+
 NS_ELLOOP_END

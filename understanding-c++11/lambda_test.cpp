@@ -104,7 +104,7 @@ TEST(Lambda, ConvertLambdaToFunctionPointer) {
 // find a number in vector.
 TEST(Lambda, WorkWithSTLFindANumber) {
     USING_NS_STD;
-    vector<int> nums = { 1, 2, 3, 4, 5, 6, 7, 8 };
+    vector<int> nums { 1, 2, 3, 4, 5, 6, 7, 8 };
     int target(10);
     // find using functor.
     auto iter = std::find_if(
@@ -119,7 +119,7 @@ TEST(Lambda, WorkWithSTLFindANumber) {
 
 TEST(Lambda, DoManyThingsAtTheSameTime) {
     USING_NS_STD;
-    vector<int> nums = { 1, 2, 3 };
+    vector<int> nums({ 1, 2, 3 });
     int increase(0);
     int decrease(10);
     // use STL numeric, loop 2 times.

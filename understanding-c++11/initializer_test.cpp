@@ -1,5 +1,6 @@
 #include "initializer_test.h"
 #include "gtest/gtest.h"
+#include <type_traits>
 
 NS_ELLOOP_BEGIN
 TEST(Initializer_List, InitTest) {
@@ -46,5 +47,43 @@ TEST(Initializer_List, AssignmentOperator) {
     while (len--) {
         EXPECT_EQ(10, it.data()[len]);
     }
+}
+
+void funcA(A a) {}
+void funcB(B b) {}
+
+TEST(TypeConvert, CustomConverter) {
+    
+    // ??: why? 
+    //EXPECT_EQ(10, ConvertToInt());
+
+    ConvertToInt cit;
+    EXPECT_EQ(10, cit());
+
+    //---------------------------  ---------------------------
+    CanBeAB ca;
+    CanBeAB cb;
+    bool sameA1 = std::is_same<decltype(ca()), A>::value;
+    bool sameA2 = std::is_same<decltype(ca.operator A()), A>::value;
+    EXPECT_TRUE(sameA1);
+    EXPECT_TRUE(sameA2);
+
+    bool sameB1 = std::is_same<decltype(cb()), A>::value;
+    bool sameB2 = std::is_same<decltype(cb.operator B), A>::value;
+    EXPECT_TRUE(sameB1);
+    EXPECT_FALSE(sameB2);
+
+    void funcA(A a);
+    void funcB(B b);
+
+    funcA(ca);
+    //funcB(cb);  // error: cannot convert cb to B. (explicit operator B()).
+   
+    A a1(ca);
+    A a2 = ca;
+
+    B b1(cb);
+    //B b2 = cb;     // error: cannot convert cb to B. (explicit operator B()). 
+    B b3 = static_cast<B>(cb);
 }
 NS_ELLOOP_END

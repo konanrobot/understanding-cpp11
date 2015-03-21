@@ -20,6 +20,9 @@
     <ClCompile Include="lambda_test.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="user_define_literal.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -51,6 +54,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="lambda_test.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="user_define_literal.h">
       <Filter>c++11</Filter>
     </ClInclude>
   </ItemGroup>
