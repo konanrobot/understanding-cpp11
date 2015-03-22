@@ -27,6 +27,8 @@
     <ClCompile Include="using_vs_typedef.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="SFINEA.cpp" />
+    <ClCompile Include="auto.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -68,6 +70,8 @@
     </ClInclude>
     <ClInclude Include="inline_namespace.h" />
     <ClInclude Include="using_vs_typedef.h" />
+    <ClInclude Include="SFINEA.h" />
+    <ClInclude Include="auto.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

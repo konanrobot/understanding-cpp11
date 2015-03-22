@@ -5,10 +5,15 @@ NS_ELLOOP_BEGIN
 
 USING_NS_STD;
 TEST(Using, TemplateUsing) {
-    vector<int> vi{ 1, 2, 3 };
-    vector<int>::iterator iter;
-    bool same = is_same<VecIter<int>, decltype(iter)>::value;
+    IntMap<std::string> age_map{ 
+        { "Tom", 11 }, 
+        { "Jerry", 20 }, 
+        { "David", 30 }
+    };
+    bool same = std::is_same < decltype(age_map)
+        , std::map < std::string, int >> ::value;
     EXPECT_TRUE(same);
+
 }
 
 NS_ELLOOP_END

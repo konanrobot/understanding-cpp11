@@ -79,12 +79,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="auto.cpp" />
     <ClCompile Include="compatibility.cpp" />
     <ClCompile Include="constructor_test.cpp" />
     <ClCompile Include="initializer_test.cpp" />
     <ClCompile Include="lambda_test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pod_test.cpp" />
+    <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="thread_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -93,6 +95,7 @@
     <ClCompile Include="using_vs_typedef.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="auto.h" />
     <ClInclude Include="inline_namespace.h" />
     <ClInclude Include="lambda_test.h" />
     <ClInclude Include="messi.h" />
@@ -104,6 +107,7 @@
     <ClInclude Include="macro_define.h" />
     <ClInclude Include="pod_test.h" />
     <ClInclude Include="print_util.h" />
+    <ClInclude Include="SFINEA.h" />
     <ClInclude Include="thread_test.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
