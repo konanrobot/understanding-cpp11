@@ -54,5 +54,40 @@ TEST(Decltype, TemplateFunction) {
 	EXPECT_EQ(11.2, sumid);
 }
 
+TEST( Decltype, FourRulesForUsingDecltype ) {
+    int i( 10 );
+    int arr[10];
+    int *ptr = arr;
+    struct S { int si; } s;
+    void foo(double);
+    void foo( int );
+    int && rvalueReference();
+    const bool func( int );
+
+    //1. e is id-expression(without brackets) or member visit operator. --> decltype(e) == T.
+    decltype(arr) v1;
+    decltype(ptr) v2;
+    decltype(s.si) v3;
+    //decltype(foo) v4; // error: foo is overloaded.
+
+    // 2. e == xvalue --> decltype(e) == rvalue-reference.
+    decltype(rvalueReference) v5;
+
+    // 3. e --> lvalue --> decltype(e)==lvalue-reference.
+    // following var must be bound with i, because they are all l-value-reference.
+    decltype(true ? i : i) v6 = i;
+    decltype((i)) var7 = i;
+    decltype(++i) var8 = i;
+    decltype(arr[0]) var9 = i;
+    decltype("hello") var10 = "12345"; // const char (&var10) [5];
+    decltype(*ptr) var11 = i;
+
+    // 4. other situations, e --> decltype(e) == e.
+    decltype(1) var12;
+    decltype(i++) var13;
+    decltype(func( 1 )) var14 = 1000;
+}
+
+
 NS_END(decltype_test)
 NS_END(elloop)
