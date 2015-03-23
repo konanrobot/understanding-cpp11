@@ -29,6 +29,7 @@
     </ClCompile>
     <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="auto.cpp" />
+    <ClCompile Include="decltype.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -72,6 +73,7 @@
     <ClInclude Include="using_vs_typedef.h" />
     <ClInclude Include="SFINEA.h" />
     <ClInclude Include="auto.h" />
+    <ClInclude Include="decltype.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

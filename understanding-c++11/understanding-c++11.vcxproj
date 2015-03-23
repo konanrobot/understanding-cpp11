@@ -82,6 +82,7 @@
     <ClCompile Include="auto.cpp" />
     <ClCompile Include="compatibility.cpp" />
     <ClCompile Include="constructor_test.cpp" />
+    <ClCompile Include="decltype.cpp" />
     <ClCompile Include="initializer_test.cpp" />
     <ClCompile Include="lambda_test.cpp" />
     <ClCompile Include="main.cpp" />
@@ -96,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auto.h" />
+    <ClInclude Include="decltype.h" />
     <ClInclude Include="inline_namespace.h" />
     <ClInclude Include="lambda_test.h" />
     <ClInclude Include="messi.h" />
