@@ -64,28 +64,75 @@ TEST( Decltype, FourRulesForUsingDecltype ) {
     int && rvalueReference();
     const bool func( int );
 
+    bool same( false );
+
+    //------------------------------------------------------
     //1. e is id-expression(without brackets) or member visit operator. --> decltype(e) == T.
-    decltype(arr) v1;
-    decltype(ptr) v2;
-    decltype(s.si) v3;
+    decltype(arr) v1;   // int[10]
+    same = std::is_same<decltype(v1), int[10]>::value;
+    EXPECT_TRUE( same );
+
+    decltype(ptr) v2;   // int*
+    same = std::is_same<decltype(v2), int*>::value;
+    EXPECT_TRUE( same );
+
+    decltype(s.si) v3;  // int
+    same = std::is_same<decltype(v3), int>::value;
+    EXPECT_TRUE( same );
+
     //decltype(foo) v4; // error: foo is overloaded.
+    //------------------------------------------------------
 
+    //------------------------------------------------------
     // 2. e == xvalue --> decltype(e) == rvalue-reference.
-    decltype(rvalueReference) v5;
-
+    decltype(rvalueReference) v5;   // int&&
+    same = std::is_same<decltype(v5), int&&>::value;
+    EXPECT_TRUE( same );
+    //------------------------------------------------------
+    
+    //------------------------------------------------------
     // 3. e --> lvalue --> decltype(e)==lvalue-reference.
     // following var must be bound with i, because they are all l-value-reference.
-    decltype(true ? i : i) v6 = i;
-    decltype((i)) var7 = i;
-    decltype(++i) var8 = i;
-    decltype(arr[0]) var9 = i;
-    decltype("hello") var10 = "12345"; // const char (&var10) [5];
-    decltype(*ptr) var11 = i;
+    decltype(true ? i : i) v6 = i;      // int&
+    same = std::is_same<decltype(v6), int&>::value;
+    EXPECT_TRUE( same );
 
+    decltype((i)) v7 = i;             // int&
+    same = std::is_same<decltype(v7), int&>::value;
+    EXPECT_TRUE( same );
+
+    decltype(++i) v8 = i;             // int&
+    same = std::is_same<decltype(v8), int&>::value;
+    EXPECT_TRUE( same );
+
+    decltype(arr[0]) v9 = i;          // int&, operator[] return l-value
+    same = std::is_same<decltype(v9), int&>::value;
+    EXPECT_TRUE( same );
+
+    decltype("hello") v10 = "12345";  // const char (&v10) [5];
+    same = std::is_same<decltype(v10), const char (&)[5]>::value;
+    EXPECT_TRUE( same );
+
+    decltype(*ptr) v11 = i;           // int&, operator* return l-value
+    same = std::is_same<decltype(v11), int&>::value;
+    EXPECT_TRUE( same );
+    //------------------------------------------------------
+
+
+    //------------------------------------------------------
     // 4. other situations, e --> decltype(e) == e.
-    decltype(1) var12;
-    decltype(i++) var13;
-    decltype(func( 1 )) var14 = 1000;
+    decltype(1) v12;                  // int
+    same = std::is_same<decltype(v12), int>::value;
+    EXPECT_TRUE( same );
+
+    decltype(i++) v13;                // int
+    same = std::is_same<decltype(v13), int>::value;
+    EXPECT_TRUE( same );
+
+    decltype(func( 1 )) v14 = 1000;   // const bool
+    same = std::is_same<decltype(v14), const bool>::value;
+    EXPECT_TRUE( same );
+    //------------------------------------------------------
 }
 
 
