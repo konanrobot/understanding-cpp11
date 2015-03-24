@@ -23,13 +23,27 @@
     <ClCompile Include="user_define_literal.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
-    <ClCompile Include="unlimited_union.cpp" />
     <ClCompile Include="using_vs_typedef.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
-    <ClCompile Include="SFINEA.cpp" />
-    <ClCompile Include="auto.cpp" />
-    <ClCompile Include="decltype.cpp" />
+    <ClCompile Include="auto.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="decltype.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="range_based_for_loop.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="SFINEA.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="trailing_return_type.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
+    <ClCompile Include="unlimited_union.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -69,11 +83,27 @@
     <ClInclude Include="unlimited_union.h">
       <Filter>c++11</Filter>
     </ClInclude>
-    <ClInclude Include="inline_namespace.h" />
-    <ClInclude Include="using_vs_typedef.h" />
-    <ClInclude Include="SFINEA.h" />
-    <ClInclude Include="auto.h" />
-    <ClInclude Include="decltype.h" />
+    <ClInclude Include="auto.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="decltype.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="range_based_for_loop.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="SFINEA.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="trailing_return_type.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="using_vs_typedef.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="inline_namespace.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

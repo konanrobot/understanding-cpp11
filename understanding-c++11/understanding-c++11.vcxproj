@@ -87,10 +87,12 @@
     <ClCompile Include="lambda_test.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pod_test.cpp" />
+    <ClCompile Include="range_based_for_loop.cpp" />
     <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="thread_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="trailing_return_type.cpp" />
     <ClCompile Include="unlimited_union.cpp" />
     <ClCompile Include="user_define_literal.cpp" />
     <ClCompile Include="using_vs_typedef.cpp" />
@@ -109,10 +111,12 @@
     <ClInclude Include="macro_define.h" />
     <ClInclude Include="pod_test.h" />
     <ClInclude Include="print_util.h" />
+    <ClInclude Include="range_based_for_loop.h" />
     <ClInclude Include="SFINEA.h" />
     <ClInclude Include="thread_test.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="trailing_return_type.h" />
     <ClInclude Include="unlimited_union.h" />
     <ClInclude Include="user_define_literal.h" />
     <ClInclude Include="using_vs_typedef.h" />

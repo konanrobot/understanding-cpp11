@@ -85,8 +85,12 @@ TEST( Decltype, FourRulesForUsingDecltype ) {
 
     //------------------------------------------------------
     // 2. e == xvalue --> decltype(e) == rvalue-reference.
-    decltype(rvalueReference) v5;   // int&&
-    same = std::is_same<decltype(v5), int&&>::value;
+	decltype(rvalueReference) v5;			// int&& ();
+	same = std::is_same<decltype(v5), int&& ()>::value;
+	EXPECT_TRUE(same);
+
+	decltype(rvalueReference()) v52 = 1;	// int&&
+    same = std::is_same<decltype(v52), int&&>::value;
     EXPECT_TRUE( same );
     //------------------------------------------------------
     
@@ -109,9 +113,15 @@ TEST( Decltype, FourRulesForUsingDecltype ) {
     same = std::is_same<decltype(v9), int&>::value;
     EXPECT_TRUE( same );
 
-    decltype("hello") v10 = "12345";  // const char (&v10) [5];
-    same = std::is_same<decltype(v10), const char (&)[5]>::value;
+    decltype("hello") v10 = "12345";  // const char (&v10) [6];
+	psln(typeid(v10).name());
+	psln(typeid("hello").name());
+	same = std::is_same<decltype(v10), const char(&)[5]>::value;
+	EXPECT_FALSE(same);
+	same = std::is_same<decltype(v10), const char(&)[6]>::value;
     EXPECT_TRUE( same );
+	same = std::is_same<decltype(v10), const char [6]>::value;
+	EXPECT_FALSE(same);
 
     decltype(*ptr) v11 = i;           // int&, operator* return l-value
     same = std::is_same<decltype(v11), int&>::value;
@@ -131,10 +141,68 @@ TEST( Decltype, FourRulesForUsingDecltype ) {
 
     decltype(func( 1 )) v14 = 1000;   // const bool
     same = std::is_same<decltype(v14), const bool>::value;
-    EXPECT_TRUE( same );
+	EXPECT_FALSE(same);
+	same = std::is_same<decltype(v14), bool>::value;	// why const bool == bool?
+	EXPECT_TRUE(same);
     //------------------------------------------------------
+
+	//---------------------- validate using is_lvalue_reference<T> ----------------------
+	EXPECT_EQ(1, std::is_lvalue_reference<decltype(v6)>::value);
+	EXPECT_EQ(1, std::is_lvalue_reference<decltype(v7)>::value);
+	EXPECT_EQ(1, std::is_lvalue_reference<decltype(v8)>::value);
+	EXPECT_EQ(1, std::is_lvalue_reference<decltype(v9)>::value);
+
+	EXPECT_EQ(1, std::is_rvalue_reference < decltype(v52) >::value);
 }
 
+TEST(Decltype, CVQualifier) {
+	// unlike auto keyword, decltype will be affected with c-v qualifier.
+	const int ci = 10;
+	volatile int vi;
+	decltype(ci) i1 = 1;
+	bool same = std::is_same<decltype(i1), const int>::value;
+	EXPECT_TRUE(same);
+	same = std::is_same<decltype(i1), int>::value;
+	EXPECT_FALSE(same);
+	EXPECT_EQ(1, std::is_const<decltype(i1)>::value);
+
+	decltype(vi) i2;
+	same = std::is_same<decltype(i2), volatile int>::value;
+	EXPECT_TRUE(same);
+	EXPECT_EQ(1, std::is_volatile<decltype(i2)>::value);
+
+}
+
+TEST(Decltype, IgnoreRepeatSpecifier) {
+	int i = 1;
+	int & ri = i;
+	int * p = &i;
+	const int k = 1;
+
+	decltype(i) ii = 1;			// ii : int.
+	EXPECT_EQ(typeid(ii).hash_code(), typeid(int).hash_code());
+	// or
+	bool same = std::is_same<int, decltype(ii)>::value;
+	EXPECT_TRUE(same);
+
+	// ri2 will be int&. NOT int&& !
+	// '&' before ri2 is ignore, decltype(ri) is already int&.
+	decltype(ri) & ri2 = i;		
+	EXPECT_EQ(1, std::is_lvalue_reference<decltype(ri2)>::value);
+	EXPECT_EQ(0, std::is_rvalue_reference<decltype(ri2)>::value);
+
+	decltype(p) ptri = &i;		// ptri is int*.
+	//decltype(p) * pptri = &i;	// error: * will  not be ignored. unlike &.
+	decltype(p) * pptri = &p;	// pptri is int**.
+	same = std::is_same<int*, decltype(ptri)>::value;
+	EXPECT_TRUE(same);
+	same = std::is_same<int**, decltype(pptri)>::value;
+	EXPECT_TRUE(same);
+
+	const decltype(k) ck = 10;	// ck is const int. begenning 'const' is ignored.
+	same = std::is_same<const int, decltype(ck)>::value;
+	EXPECT_TRUE(same);
+}
 
 NS_END(decltype_test)
 NS_END(elloop)
