@@ -52,5 +52,6 @@ auto (*pf1)() -> auto (*)() -> int(*)();
 
 // 3. struct, union, enum. todo!
 
+
 NS_END(trailing_return_type)
 NS_END(elloop)
