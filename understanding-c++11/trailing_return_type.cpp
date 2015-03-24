@@ -15,9 +15,27 @@ TEST(TrailingReturnType, UsedInTemplate) {
 }
 
 TEST(TrailingReturnType, UsefulTest) {
-	//todo test.
-	//bool same = std::is_same<decltype(pf), decltype(pf1)>::value;
-	//EXPECT_TRUE(same);
+    /*
+    int( *(*pf())() )() {
+        return nullptr;
+    }
+    
+    auto pf1() -> auto (*)() -> int(*)() {
+        return  nullptr;
+    }
+    */
+	bool same = std::is_same<decltype(pf), decltype(pf1)>::value;
+	EXPECT_TRUE(same);
+
+    typedef int( *ptr_f )();
+    typedef ptr_f( *t )();
+    same = std::is_same<t, decltype(pf())>::value;
+    EXPECT_TRUE( same );
+
+    //ptr_f ptrf;
+    //t ptr_ptr_f;
+    //int( *ptr1 )() = ptrf;
+    //int( *(*pptr1)() )() = ptr_ptr_f;
 }
 NS_END(trailing_return_type)
 NS_END(elloop)

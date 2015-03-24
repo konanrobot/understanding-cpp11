@@ -44,11 +44,24 @@ auto foo() -> int {
 auto foo2() -> void {}
 
 // 2. function pointer
-//a complex declaration.
-int (*(*pf)())();
+//a complex function definition.
+// pf() defines a function, whose 
+// return type A is a function ptr pA( pA = B (*pA)() ),
+// pA points to a type B, which is still a function ptr ( B = int (*)() ).
+int( *(*pf())() )() {
+    return nullptr;
+}
 
 // same with:
-auto (*pf1)() -> auto (*)() -> int(*)();
+auto pf1() -> auto (*)() -> int(*)() {
+    return  nullptr;
+}
+
+
+int ( *pf2() )() {
+    return nullptr;
+}
+
 
 // 3. struct, union, enum. todo!
 
