@@ -57,11 +57,15 @@ auto pf1() -> auto (*)() -> int(*)() {
     return  nullptr;
 }
 
+// pf and pf1 are function type, 
+// compare with following codes, 
+// which define a function pointer type ptr_ptr_func_t.
+// ptr_ptr_func_t type is the same type with &pf or &pf1.
+typedef int( *(*ptr_ptr_func_t)() )();
 
-int ( *pf2() )() {
-    return nullptr;
-}
-
+// tricks:
+// 从变量x开始看，先往右看有没有（括号，有，那么x是一个函数定义；
+// 否则，右边是）括号，往左看看到*，那么它是一个函数指针定义；
 
 // 3. struct, union, enum. todo!
 
