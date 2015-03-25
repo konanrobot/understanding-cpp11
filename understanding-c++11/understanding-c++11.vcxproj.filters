@@ -44,6 +44,9 @@
     <ClCompile Include="unlimited_union.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="strongly_typed_enum.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -102,6 +105,9 @@
       <Filter>c++11</Filter>
     </ClInclude>
     <ClInclude Include="inline_namespace.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="strongly_typed_enum.h">
       <Filter>c++11</Filter>
     </ClInclude>
   </ItemGroup>

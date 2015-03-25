@@ -30,44 +30,89 @@ auto sum(const T1 & t1, const T2 & t2) -> decltype(t1 + t2) {
 }
 
 // this feature can also used with :
-// 1. normal function definition/declaration.
-// 2. function pointer definition/declaration.
-// 3. struct, union, enum member definiton. 
-// 4. todo!
+// 1. normal function(pointer), function template, function reference definition/declaration.
+// 2. member function of struct or class, class template member function and so on.
 
 //---------------------- examples ----------------------
-// 1. normal function definition.
+// 1. normal function 
 auto foo() -> int {
 	return 1;
 }
 
 auto foo2() -> void {}
 
-// 2. function pointer
+
+// function pointer
 //a complex function definition.
 // pf() defines a function, whose 
 // return type A is a function ptr pA( pA = B (*pA)() ),
 // pA points to a type B, which is still a function ptr ( B = int (*)() ).
-int( *(*pf())() )() {
-    return nullptr;
+int(*(*pf())())() {
+	return nullptr;
 }
 
 // same with:
 auto pf1() -> auto (*)() -> int(*)() {
-    return  nullptr;
+	return  nullptr;
 }
 
 // pf and pf1 are function type, 
 // compare with following codes, 
 // which define a function pointer type ptr_ptr_func_t.
 // ptr_ptr_func_t type is the same type with &pf or &pf1.
-typedef int( *(*ptr_ptr_func_t)() )();
+typedef int(*(*ptr_ptr_func_t)())();
 
 // tricks:
 // 从变量x开始看，先往右看有没有（括号，有，那么x是一个函数定义；
 // 否则，右边是）括号，往左看看到*，那么它是一个函数指针定义；
 
-// 3. struct, union, enum. todo!
+
+// 2. member function.
+class A {
+public:
+	auto foo() -> int {
+		return data_;
+	}
+private:
+	int data_{ 10 };
+};
+
+template<typename T>
+class IntWrapper {
+public:
+	IntWrapper(int * ptr);
+	IntWrapper(const IntWrapper & other) = delete;
+	IntWrapper& operator= (const IntWrapper & other) = delete;
+
+	auto data() -> T {
+		assert(ptr_ != nullptr);
+		return *ptr_;
+	}
+	~IntWrapper();
+
+	auto ptr()->const T*;
+
+private:
+	T* ptr_;
+};
+
+template<typename T>
+IntWrapper<T>::IntWrapper(int * ptr) : ptr_(ptr) {
+}
+
+template<typename T>
+IntWrapper<T>::~IntWrapper() {
+	if (ptr_) {
+		delete ptr_;
+		ptr_ = nullptr;
+	}
+}
+
+template<typename T>
+auto IntWrapper<T>::ptr() -> const T*{
+	return ptr_;
+}
+
 
 
 NS_END(trailing_return_type)

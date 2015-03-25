@@ -23,19 +23,23 @@ TEST(TrailingReturnType, UsefulTest) {
     auto pf1() -> auto (*)() -> int(*)() {
         return  nullptr;
     }
+
+	typedef int( *(*ptr_ptr_func_t)() )();
     */
+
 	bool same = std::is_same<decltype(pf), decltype(pf1)>::value;
 	EXPECT_TRUE(same);
 
-    typedef int( *ptr_f )();
-    typedef ptr_f( *t )();
-    same = std::is_same<t, decltype(pf())>::value;
+    same = std::is_same<ptr_ptr_func_t, decltype(pf())>::value;
     EXPECT_TRUE( same );
 
-    //ptr_f ptrf;
-    //t ptr_ptr_f;
-    //int( *ptr1 )() = ptrf;
-    //int( *(*pptr1)() )() = ptr_ptr_f;
+	// member function of class.
+	A a;
+	EXPECT_EQ(10, a.foo());
+
+	// used int class template member function.
+	IntWrapper<int> q(new int(1000));
+	EXPECT_EQ(1000, q.data());
 }
 NS_END(trailing_return_type)
 NS_END(elloop)

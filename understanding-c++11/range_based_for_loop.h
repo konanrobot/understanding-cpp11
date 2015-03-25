@@ -19,7 +19,8 @@ NS_BEGIN(range_based_for_loop)
 // array type are surpported.
 
 // used with user-defined data structure
-// you should implement begin(), end() and so on. (todo! finish this part).
+// you should implement begin(), end() and implement ++ and == operator for the
+// iter.
 
 
 NS_END(range_based_for_loop)
