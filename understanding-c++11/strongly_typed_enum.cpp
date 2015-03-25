@@ -5,17 +5,17 @@ NS_BEGIN(strongly_typed_enum)
 
 TEST(StrongEnum, UseTest) {
 	//kSampleEnum e1(Dog);				// error: strong scope type. must use::
-	kAnimal dog(kAnimal::Dog);
+	Animal dog(Animal::kDog);
 	EXPECT_EQ(-111, (int)dog);
-	EXPECT_EQ(-110, static_cast<int>(kAnimal::Cat));
-	EXPECT_EQ(-110, (int)kAnimal::Cat);
-	EXPECT_GT(kAnimal::Cat, dog);
+	EXPECT_EQ(-110, static_cast<int>(Animal::kCat));
+	EXPECT_EQ(-110, (int)Animal::kCat);
+	EXPECT_GT(Animal::kCat, dog);
 
-	kAnimal cat(kAnimal::Cat);
+	Animal cat(Animal::kCat);
 	EXPECT_LT(dog, cat);
 
-	kCar jeep(kCar::Jeep);
-	kCar tank(kCar::Tank);
+	Car jeep(Car::kJeep);
+	Car tank(Car::kTank);
 	EXPECT_EQ(0, (int)jeep);
 	EXPECT_EQ(1, (int)tank);
 

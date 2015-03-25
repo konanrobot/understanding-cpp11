@@ -50,6 +50,9 @@
     <ClCompile Include="smart_pointer.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="temp_test.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -123,6 +126,9 @@
     </Filter>
     <Filter Include="c++11">
       <UniqueIdentifier>{f0fb3859-0261-44c5-a9ec-b6687931184a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="temp">
+      <UniqueIdentifier>{ba7f57fb-afb5-4381-b9f5-87f0fcf3171e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

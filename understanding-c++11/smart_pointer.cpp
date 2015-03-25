@@ -27,8 +27,17 @@ TEST( SmartPointer, UniquePointer ) {
     EXPECT_EQ( nullptr, pd2 );
     //*pd1 = Dog( "tom2" );               // error: pd1 is empty(reseted).
 
+	// try to use unique_ptr in stl container.
+	/*std::vector<u_ptr<Dog>> ptr_vec;
+	ptr_vec.push_back(pd1);				// fail, copy constructor is deleted.
+	ptr_vec.push_back(pd2);*/
 
 
+}
+TEST(SmartPointer, SharedPointer) {
+	// shared_ptr 放到容器里，引用计数加1，那么容器销毁他会自动减1吗？
+	s_ptr<int> p1;
+	p1 = new int(10);
 }
 
 NS_END( smart_pointer )

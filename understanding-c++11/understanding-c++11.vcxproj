@@ -91,6 +91,7 @@
     <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="smart_pointer.cpp" />
     <ClCompile Include="strongly_typed_enum.cpp" />
+    <ClCompile Include="temp_test.cpp" />
     <ClCompile Include="thread_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

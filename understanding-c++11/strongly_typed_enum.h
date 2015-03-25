@@ -20,10 +20,10 @@ NS_BEGIN(strongly_typed_enum)
 using base_type = int;
 //using base_type = unsigned int;
 //using base_type = wchar_t; //should cause a error, but passes in vs2013.
-enum class kAnimal : base_type { Dog=-111, Cat };
+enum class Animal : base_type { kDog=-111, kCat };
 
 // without base_type, default is int.
-enum class kCar { Jeep, Tank};
+enum class Car { kJeep, kTank};
 
 
 NS_END(strongly_typed_enum)
