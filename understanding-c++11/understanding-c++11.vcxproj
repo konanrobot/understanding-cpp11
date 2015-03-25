@@ -89,6 +89,7 @@
     <ClCompile Include="pod_test.cpp" />
     <ClCompile Include="range_based_for_loop.cpp" />
     <ClCompile Include="SFINEA.cpp" />
+    <ClCompile Include="smart_pointer.cpp" />
     <ClCompile Include="strongly_typed_enum.cpp" />
     <ClCompile Include="thread_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -114,6 +115,7 @@
     <ClInclude Include="print_util.h" />
     <ClInclude Include="range_based_for_loop.h" />
     <ClInclude Include="SFINEA.h" />
+    <ClInclude Include="smart_pointer.h" />
     <ClInclude Include="strongly_typed_enum.h" />
     <ClInclude Include="thread_test.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

@@ -47,6 +47,9 @@
     <ClCompile Include="strongly_typed_enum.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="smart_pointer.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -108,6 +111,9 @@
       <Filter>c++11</Filter>
     </ClInclude>
     <ClInclude Include="strongly_typed_enum.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="smart_pointer.h">
       <Filter>c++11</Filter>
     </ClInclude>
   </ItemGroup>
