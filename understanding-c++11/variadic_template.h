@@ -96,7 +96,8 @@ void Printf( const char * s, T val, Args...args ) {
     while ( *s ) {
         if (*s == '%' && *++s != '%')
         {
-            std::cout << val;               // notice: val's type is known.
+            // val's type is known. not like va_arg(args, type).
+            std::cout << val;              
             return Printf( ++s, args... );
         }
         std::cout << *s++;
