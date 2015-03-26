@@ -41,7 +41,7 @@ template <typename ... Args>
 class Foo1 : private Bar1<Args>... {};
 
 if Args == X, Y;
-class Foo1 will be : 
+class Foo1 will be :
 class Foo1 : private Bar1<X>, private Bar1<Y> {}
 
 */
@@ -62,8 +62,48 @@ public:
 
 // end of recursive specialization.
 template <> class Tuple<> {};
+//------------------------------------------------------
 
+//--------------------------- 非类型模板 ---------------------------
+// Multiply, using template meta programming.
+template <long ... Args> class Multiply;
 
+template <long n, long ... Others>
+class Multiply<n, Others...> {
+public:
+    static const long value = n * Multiply<Others...>::value;
+};
 
-NS_END(variadic_template )
-NS_END(elloop )
+template <>
+class Multiply<> {
+public:
+    static const long value = 1;
+};
+
+//----------------------- variadic template function -----------------------
+// more powerful printf.
+void Printf( const char * s ) {
+    while ( *s ) {
+        if ( *s == '%' && *++s != '%' ) {
+            throw std::runtime_error( "missing arguments" );
+        }
+        std::cout << *s++;
+    }
+}
+
+template <typename T, typename ... Args>
+void Printf( const char * s, T val, Args...args ) {
+    while ( *s ) {
+        if (*s == '%' && *++s != '%')
+        {
+            std::cout << val;               // notice: val's type is known.
+            return Printf( ++s, args... );
+        }
+        std::cout << *s++;
+    }
+    // here is unreachable, if args of printf is correct.
+    throw std::runtime_error( "too much args variables." );
+}
+
+NS_END( variadic_template )
+NS_END( elloop )

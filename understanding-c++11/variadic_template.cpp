@@ -34,8 +34,27 @@ TEST( VariadicTemplate, TupleTest ) {
     //t.head;
 }
 
-TEST( VariadicTemplate, TemplateClass ) {
+TEST( VariadicTemplate, FactorialTest ) {
+    long f = Multiply<1>::value;
+    EXPECT_EQ( 1, f );
+
+    f = Multiply<1, 2>::value;
+    EXPECT_EQ( 2, f );
+
+    f = Multiply<10, 10>::value;
+    EXPECT_EQ( 100, f );
+
+    f = Multiply<1, 2, 10, 10, 10, 10, 10, 10, 10>::value;
+    EXPECT_EQ( 20000000, f );
 }
+
+TEST( VariadicTemplate, PrintfTest ) {
+    Printf( "hello, world in Printf\n" );
+    Printf( "hello, world in Printf£¬ following a str: %s\n",
+            std::string( "here" ) );
+
+}
+
 
 NS_END( variadic_template )
 NS_END( elloop )
