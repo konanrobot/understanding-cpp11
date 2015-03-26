@@ -119,6 +119,7 @@
     <ClInclude Include="smart_pointer.h">
       <Filter>c++11</Filter>
     </ClInclude>
+    <ClInclude Include="todo_next.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
