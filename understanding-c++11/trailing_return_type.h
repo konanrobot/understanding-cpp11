@@ -9,7 +9,7 @@ NS_BEGIN(elloop)
 NS_BEGIN(trailing_return_type)
 
 // review following sum definition in decltype namespace.
-// its fallback is that you must call this function with a third param which
+// its drawback is that you must call this function with a third param which
 // should be exactly the same type of (t1 + t2).
 template<typename T1, typename T2>
 void sum(const T1 & t1, const T2 & t2, decltype(t1 + t2) & sum) {

@@ -53,6 +53,9 @@
     <ClCompile Include="temp_test.cpp">
       <Filter>temp</Filter>
     </ClCompile>
+    <ClCompile Include="variadic_template.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -120,6 +123,9 @@
       <Filter>c++11</Filter>
     </ClInclude>
     <ClInclude Include="todo_next.h" />
+    <ClInclude Include="variadic_template.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

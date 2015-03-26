@@ -8,7 +8,7 @@ _Pragma("once")
 NS_BEGIN(elloop)
 NS_BEGIN(strongly_typed_enum)
 
-//fallbackk of old enum: (非强作用域类型)
+//drawback of old enum: (非强作用域类型)
 // 1. namespace pollution, enum's value auto inject into global namespace.
 // 2. convert to int implicitly.
 // 3. 占用空间不确定

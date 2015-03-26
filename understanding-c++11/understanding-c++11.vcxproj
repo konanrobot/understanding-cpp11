@@ -99,6 +99,7 @@
     <ClCompile Include="unlimited_union.cpp" />
     <ClCompile Include="user_define_literal.cpp" />
     <ClCompile Include="using_vs_typedef.cpp" />
+    <ClCompile Include="variadic_template.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="auto.h" />
@@ -126,6 +127,7 @@
     <ClInclude Include="unlimited_union.h" />
     <ClInclude Include="user_define_literal.h" />
     <ClInclude Include="using_vs_typedef.h" />
+    <ClInclude Include="variadic_template.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
