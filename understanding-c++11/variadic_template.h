@@ -13,7 +13,7 @@ NS_BEGIN( variadic_template )
 // i.e. va_arg do not know the type info of the args.
 int sum( int count, ... );
 
-// variadic template solve this problem.
+// VARIADIC TEMPLATE solve this problem.
 
 // 1. variadic template class
 // template <typename...args> class Foo;
@@ -22,7 +22,7 @@ int sum( int count, ... );
 // template <typename ... T> void foo(T ... args);
 // restriction: variadic args must be the last param in foo().
 
-// concepts: unpack, pack expansion.
+// CONCEPTS: unpack, pack expansion.
 // two kinds of pack expansion: <Args...>, <Args>... .
 // e.g. 
 /*
@@ -46,9 +46,18 @@ class Foo1 : private Bar1<X>, private Bar1<Y> {}
 
 */
 
+// 7 PLACES where unpack can happen.
+// 1. expression.
+// 2. initializer_list
+// 3. base class description list.
+// 4. class members initial list.
+// 5. template params list.
+// 6. attribute list.
+// 7. lambda's capture list.
+
 //--------------------------- begin test ---------------------------
 
-// define a Tuple use type template.
+// 1. define a Tuple use type template.
 
 // declaration.
 template <typename ... Args> class Tuple;
@@ -64,8 +73,8 @@ public:
 template <> class Tuple<> {};
 //------------------------------------------------------
 
-//--------------------------- 非类型模板 ---------------------------
-// Multiply, using template meta programming.
+//----------------------- nontype template (非类型模板) -----------------------
+// 2. Multiply, using template meta programming.
 template <long ... Args> class Multiply;
 
 template <long n, long ... Others>
@@ -81,7 +90,7 @@ public:
 };
 
 //----------------------- variadic template function -----------------------
-// more powerful printf.
+// 3. more powerful printf.
 void Printf( const char * s ) {
     while ( *s ) {
         if ( *s == '%' && *++s != '%' ) {
@@ -105,6 +114,97 @@ void Printf( const char * s, T val, Args...args ) {
     // here is unreachable, if args of printf is correct.
     throw std::runtime_error( "too much args variables." );
 }
+
+//---------------------- example of unpack  ----------------------
+// 4. variadic print util
+template <typename ... Args> void DummyWrapper(const Args&... args) {}
+template <typename T> 
+const T& print(const T& t) {
+	std::cout << t;
+	return t;
+}
+
+template <typename ... Args>
+void vPrint(const Args&... args) {
+	DummyWrapper(print(args)...);
+	// DummyWrapper(args)...; // error.
+}
+
+//---------------------- example of sizeof... ----------------------
+// 5. sizeof ..., return the number of the variadic in the template.
+template <typename ... Args>
+class VariadicCount {
+public:
+	static const size_t value = sizeof...(Args);
+};
+
+template <typename ... Args>
+size_t numOfVariadic(Args...args) {
+	return sizeof...(Args);
+}
+
+//---------------------- template variadic template ----------------------
+// define a container, use type T as its inside class's template type.
+template <typename T, template<typename> class ... Args> class Container;
+
+template <typename T, template<typename> class Head, 
+		  template<typename> class ... Others>
+class Container<T, Head, Others...> {
+public:
+	Head<T> a;
+	Container<T, Others...> b;
+};
+
+template <typename T> class Container<T> {};
+
+// auxiliary class for testing template variadic template
+template <typename T> class A {};
+template <typename T> class B {};
+
+//-------- perfect forward using template variadic template function ----------
+// Fa, Fb is classes to be forwarded.
+class Fa {
+public:
+	Fa() {}
+	Fa(const Fa& fa) {
+		pln("Fa copied");
+	}
+	Fa(Fa&& fa) {
+		pln("Fa moved");
+	}
+};
+
+class Fb {
+public:
+	Fb() {}
+	Fb(const Fb& fb) {
+		pln("Fb copied");
+	}
+	Fb(Fb&& fb) {
+		pln("Fb moved");
+	}
+};
+
+// wrapper.
+template <typename ... Args> class MultiTypes;
+template <typename T, typename ... Others>
+class MultiTypes<T, Others...> : public MultiTypes<Others...>{
+public:
+	T t_;
+	MultiTypes<T, Others...>(T t, Others... others) 
+		: t_(t), MultiTypes<Others...>(others...) {
+		pln("construct MutiTypes<T, Others...>");
+	}
+};
+
+template <> class MultiTypes<> {};
+
+// use template function to forward.
+template <template<typename...> class Multi, typename... Args>
+Multi<Args...> build(Args&&... args) {
+	return Multi<Args...>(std::forward<Args>(args)...);
+}
+
 
 NS_END( variadic_template )
 NS_END( elloop )

@@ -18,7 +18,7 @@ NS_BEGIN( smart_pointer )
 // see http://www.cplusplus.com/reference/memory/unique_ptr/?kw=unique_ptr for
 // more information about unique_ptr<T>.
 
-// 2. shared_ptr<T> is reference-count-based pointer. they shared the pointer.
+// 2. shared_ptr<T> is reference-counting pointer. they shared the pointer.
 // Objects of shared_ptr types have the ability of taking ownership of 
 // a pointer and share that ownership: once they take ownership, the group 
 // of owners of a pointer become responsible for its deletion when the last 
@@ -65,6 +65,12 @@ public:
     ~Dog() {
 		LOGD("dog %s is gone!\n", name_.c_str());
     }
+	Dog(const Dog& other) {
+		LOGD("dog %s copied!\n", name_.c_str());
+	}
+	Dog(Dog&& other) {
+		LOGD("dog %s moved!\n", name_.c_str());
+	}
     const std::string & name() const {
         return name_; 
     }
@@ -72,10 +78,7 @@ private:
     std::string name_;
 };
 
-std::ostream& operator << (std::ostream & os, const Dog & dog) {
-    os << dog.name();
-    return os;
-}
+std::ostream& operator << (std::ostream & os, const Dog & dog);
 
 
 

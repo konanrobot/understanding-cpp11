@@ -98,5 +98,10 @@ TEST(SmartPointer, WeakPointer) {
 
 }
 
+std::ostream& operator<<(std::ostream & os, const Dog & dog) {
+	os << dog.name();
+	return os;
+}
+
 NS_END( smart_pointer )
 NS_END( elloop )

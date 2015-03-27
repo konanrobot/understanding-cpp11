@@ -1,4 +1,5 @@
 #include "variadic_template.h"
+#include "smart_pointer.h"
 #include <stdarg.h> // for va_start, va_end, va_arg
 
 NS_BEGIN( elloop )
@@ -55,6 +56,42 @@ TEST( VariadicTemplate, PrintfTest ) {
 
 }
 
+TEST(VariadicTemplate, VariadicPrintf) {
+	using Dog = smart_pointer::Dog;
+	Dog dog("Henry");
+	vPrint("hello\n", std::string("world\n"), 'h', '\n', 10, '\n', 11.111, 
+		'\n', dog, '\n');
+}
+
+TEST(VariadicTemplate, VariadicCountTest) {
+
+	auto c = VariadicCount<int>::value;
+	EXPECT_EQ(1, c);
+
+	c = VariadicCount<int, double, float>::value;
+	EXPECT_EQ(3, c);
+
+	c = VariadicCount<int, double, float, std::string, 
+		smart_pointer::Dog>::value;
+	EXPECT_EQ(5, c);
+
+	c = numOfVariadic(1, 2.0, 3.0, "hello", smart_pointer::Dog("Alves"));
+	EXPECT_EQ(5, c);
+
+}
+
+TEST(VariadicTemplate, TemplateVariadicTemplate) {
+	Container<int, A>;
+	Container<int, A, B>;
+	//Container<A, B>;	//error: A is a template class. need type for 1st param.
+
+}
+
+TEST(VariadicTemplate, PerfectForwardUsingVariadicTemplate) {
+	Fa fa;
+	Fb fb;
+	build<MultiTypes>(fa, fb);
+}
 
 NS_END( variadic_template )
 NS_END( elloop )
