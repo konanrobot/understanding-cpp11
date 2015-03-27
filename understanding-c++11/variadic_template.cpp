@@ -90,7 +90,11 @@ TEST(VariadicTemplate, TemplateVariadicTemplate) {
 TEST(VariadicTemplate, PerfectForwardUsingVariadicTemplate) {
 	Fa fa;
 	Fb fb;
-	build<MultiTypes>(fa, fb);
+	auto mul = build<MultiTypes>(fa, fb);
+    //Fa fa1 = mul.t_;
+    EXPECT_EQ( &mul.t_, &fa );
+    // how to find fb in mul?
+
 }
 
 NS_END( variadic_template )

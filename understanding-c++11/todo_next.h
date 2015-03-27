@@ -1,7 +1,10 @@
 /*
-1. constexpr
-2. std::function
-3. template varargs
 
+// 2015/3/27
+// 1. rvalue, move semantic
+// 2. constexpr
+// 3. unicode
+
+// test tuple, function
 
 */

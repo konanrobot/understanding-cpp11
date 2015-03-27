@@ -79,6 +79,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="alignof_alignas.cpp" />
+    <ClCompile Include="attribute.cpp" />
     <ClCompile Include="auto.cpp" />
     <ClCompile Include="compatibility.cpp" />
     <ClCompile Include="constructor_test.cpp" />
@@ -88,6 +90,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pod_test.cpp" />
     <ClCompile Include="range_based_for_loop.cpp" />
+    <ClCompile Include="raw_string_literal.cpp" />
     <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="smart_pointer.cpp" />
     <ClCompile Include="strongly_typed_enum.cpp" />
@@ -102,6 +105,8 @@
     <ClCompile Include="variadic_template.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="alignof_alignas.h" />
+    <ClInclude Include="attribute.h" />
     <ClInclude Include="auto.h" />
     <ClInclude Include="decltype.h" />
     <ClInclude Include="inline_namespace.h" />
@@ -116,6 +121,7 @@
     <ClInclude Include="pod_test.h" />
     <ClInclude Include="print_util.h" />
     <ClInclude Include="range_based_for_loop.h" />
+    <ClInclude Include="raw_string_literal.h" />
     <ClInclude Include="SFINEA.h" />
     <ClInclude Include="smart_pointer.h" />
     <ClInclude Include="strongly_typed_enum.h" />

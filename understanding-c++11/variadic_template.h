@@ -195,6 +195,15 @@ public:
 		: t_(t), MultiTypes<Others...>(others...) {
 		pln("construct MutiTypes<T, Others...>");
 	}
+    /* error.  how to get base's t_ ?
+    T& getBaseT() {
+        if (sizeof...(Others) > 0)
+        {
+            return Multiply<Others...>::t_;
+        }
+        return t_;
+    }
+    */
 };
 
 template <> class MultiTypes<> {};

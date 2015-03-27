@@ -56,6 +56,9 @@
     <ClCompile Include="variadic_template.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="alignof_alignas.cpp" />
+    <ClCompile Include="attribute.cpp" />
+    <ClCompile Include="raw_string_literal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -126,6 +129,9 @@
     <ClInclude Include="variadic_template.h">
       <Filter>c++11</Filter>
     </ClInclude>
+    <ClInclude Include="alignof_alignas.h" />
+    <ClInclude Include="attribute.h" />
+    <ClInclude Include="raw_string_literal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
