@@ -91,6 +91,7 @@
     <ClCompile Include="pod_test.cpp" />
     <ClCompile Include="range_based_for_loop.cpp" />
     <ClCompile Include="raw_string_literal.cpp" />
+    <ClCompile Include="rvalue_refrence_and_move_constructor.cpp" />
     <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="smart_pointer.cpp" />
     <ClCompile Include="strongly_typed_enum.cpp" />
@@ -99,6 +100,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="trailing_return_type.cpp" />
+    <ClCompile Include="tuple_test.cpp" />
     <ClCompile Include="unlimited_union.cpp" />
     <ClCompile Include="user_define_literal.cpp" />
     <ClCompile Include="using_vs_typedef.cpp" />
@@ -122,6 +124,7 @@
     <ClInclude Include="print_util.h" />
     <ClInclude Include="range_based_for_loop.h" />
     <ClInclude Include="raw_string_literal.h" />
+    <ClInclude Include="rvalue_refrence_and_move_constructor.h" />
     <ClInclude Include="SFINEA.h" />
     <ClInclude Include="smart_pointer.h" />
     <ClInclude Include="strongly_typed_enum.h" />
@@ -130,6 +133,7 @@
     </ClInclude>
     <ClInclude Include="todo_next.h" />
     <ClInclude Include="trailing_return_type.h" />
+    <ClInclude Include="tuple_test.h" />
     <ClInclude Include="unlimited_union.h" />
     <ClInclude Include="user_define_literal.h" />
     <ClInclude Include="using_vs_typedef.h" />
