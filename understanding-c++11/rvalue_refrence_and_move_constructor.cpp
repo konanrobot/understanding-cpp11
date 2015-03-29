@@ -53,12 +53,12 @@ BigDog getTempBigDog() {
 
 TEST(RValueReference, MoveConstructorTest) {
 	// bad practice of using move semantics.
-	//BigDog bd;
-	//LOGD("bd ptr is %d\n", (int*)bd.knowledge_);
-	//BigDog bd1(std::move(bd));
-	//// bd is invalid. although it doesn't called copy constructor and is efficient.
-	//EXPECT_EQ(nullptr, bd.knowledge_);
-	//LOGD("bd1 ptr is %d\n", (int*)bd1.knowledge_);
+	BigDog bd;
+	LOGD("bd ptr is %d\n", (int*)bd.knowledge_);
+	BigDog bd1(std::move(bd));
+	// bd is moved and invalid. although it doesn't called copy constructor and is efficient.
+	EXPECT_EQ(nullptr, bd.knowledge_);
+	LOGD("bd1 ptr is %d\n", (int*)bd1.knowledge_);
 
 	// i didn't find how to turn off RVO in vs. so in vs:
 	// this will call:
@@ -100,14 +100,29 @@ TEST(RValueReference, ReferenceFolding) {
 	EXPECT_TRUE(std::is_lvalue_reference<T2&>::value);
 	EXPECT_TRUE(std::is_rvalue_reference<T2&&>::value);
 
-	typedef int T3;
-	//EXPECT_TRUE(std::is_lvalue_reference<T3>::value);
-
-
 }
 
-TEST(RValueReference, PerfectForward) {
+void targetFunction(int && m) { LOGD("rvalue reference target\n"); }
+void targetFunction(int & m) { LOGD("lvalue reference target\n"); }
+void targetFunction(const int && m) { LOGD("const rvalue reference target\n"); }
+void targetFunction(const int & m) { LOGD("const lvalue reference target\n"); }
+/*
+template <typename T>
+void iAmForwarding(T&& t) {
+	targetFunction(std::forward<T>(t));
+}
+*/
 
+TEST(RValueReference, PerfectForward) {
+	int a;
+	int b;
+	const int c = 1;
+	const int d = 0;
+
+	iAmForwarding(a);
+	iAmForwarding(std::move(b));
+	iAmForwarding(c);
+	iAmForwarding(std::move(d));
 
 }
 

@@ -23,6 +23,11 @@ NS_BEGIN( rvalue_refrence_and_move_constructor )
 // 1. is_rvalue_reference
 // 2. is_lvalue_reference
 
+// ------------------ std::move ------------------
+// std::move is equal to operation: static_cast<T&&>(lvalue)
+// 强制转换为右值，move(x) 将会调用x的移动构造函数，被转化的x并不会立即被析构，所以
+// 注意这个问题，参考 TEST(RValueReference, MoveConstructorTest)
+
 // -------------- useful template to judge move ctr(constructor) --------------
 // 1. is_move_constructible
 // 2. is_trivially_move_constructible
@@ -45,7 +50,7 @@ NS_BEGIN( rvalue_refrence_and_move_constructor )
 | X&           |   X&&        |    X&           |
 | X&&          |   X          |    X&&          |
 | X&&          |   X&         |    X&           |
-| X&&          |   X&&        |    X&&           |
+| X&&          |   X&&        |    X&&          |
 -------------------------------------------------
 */
 
@@ -197,18 +202,22 @@ Movable getTempMovable();
 // avoids excessive copying, and avoids the template author having to 
 // write multiple overloads for lvalue and rvalue references.
 
+// target function.
+void targetFunction(int && m);
+void targetFunction(int & m);
+void targetFunction(const int && m);
+void targetFunction(const int & m);
+
+// template function decide the type of t is simple:
+// 1. iAmForwarding's param is lvalue_reference -> template param type: T&
+// 2. iAmForwarding's param is rvalue_reference -> template param type : T&&
 template <typename T>
 void iAmForwarding(T&& t) {
-	iAmTargetFunction(std::forward(t));
+	targetFunction(std::forward<T>(t));
 }
-
-
 
 template <typename T>
 using u_ptr = std::unique_ptr<T>;
-
-
-
 
 NS_END(rvalue_refrence_and_move_constructor )
 NS_END(elloop )
