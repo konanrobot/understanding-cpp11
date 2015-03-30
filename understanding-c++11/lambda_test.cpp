@@ -5,7 +5,8 @@
 #include <functional>
 #include <numeric> // accumulate
 
-NS_ELLOOP_BEGIN
+NS_BEGIN(elloop)
+NS_BEGIN(lambda_test)
 
 TEST(Lambda, Simple) {
     int a(3), b(4);
@@ -158,4 +159,5 @@ TEST(Lambda, LimitationOfLambda) {
     EXPECT_EQ(global_int, func());
 }
 
-NS_ELLOOP_END  
+NS_END(lambda_test)
+NS_END(elloop)

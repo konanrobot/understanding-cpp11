@@ -50,9 +50,6 @@
     <ClCompile Include="smart_pointer.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
-    <ClCompile Include="temp_test.cpp">
-      <Filter>temp</Filter>
-    </ClCompile>
     <ClCompile Include="variadic_template.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
@@ -140,7 +137,6 @@
     <ClInclude Include="smart_pointer.h">
       <Filter>c++11</Filter>
     </ClInclude>
-    <ClInclude Include="todo_next.h" />
     <ClInclude Include="variadic_template.h">
       <Filter>c++11</Filter>
     </ClInclude>
@@ -165,6 +161,36 @@
     <ClInclude Include="unicode_support.h">
       <Filter>c++11</Filter>
     </ClInclude>
+    <ClInclude Include="include\gtest\gtest.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest_pred_impl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest_prod.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-death-test.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-message.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-param-test.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-printers.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-spi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-test-part.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gtest\gtest-typed-test.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -173,8 +199,10 @@
     <Filter Include="c++11">
       <UniqueIdentifier>{f0fb3859-0261-44c5-a9ec-b6687931184a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="temp">
-      <UniqueIdentifier>{ba7f57fb-afb5-4381-b9f5-87f0fcf3171e}</UniqueIdentifier>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\gtest\gtest-param-test.h.pump">
+      <Filter>include</Filter>
+    </None>
   </ItemGroup>
 </Project>

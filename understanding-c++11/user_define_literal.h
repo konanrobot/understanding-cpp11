@@ -25,10 +25,14 @@ public:
     int age() {
         return age_;
     }
+	void setAge(int age) {
+		age_ = age > 0 ? age : 0;
+	}
 private:
     char name_[20];
     int age_;
 };
 
+void takePersion(Person p);
 
 NS_ELLOOP_END

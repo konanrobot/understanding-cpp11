@@ -1,8 +1,8 @@
-#ifdef WIN32
+#ifdef _MSC_VER
 #pragma once
 #else
 _Pragma("once")
-#endif // WIN32
+#endif // _MSC_VER
 
 #include "inc.h"
 #include "messi.h"

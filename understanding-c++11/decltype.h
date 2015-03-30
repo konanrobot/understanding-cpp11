@@ -12,7 +12,7 @@ NS_BEGIN(decltype_test)
 class TypeA {};
 class TypeB {};
 
-// testing anonymouse struct type.
+// testing anonymous struct type.
 struct { int a; } a_struct_value;
 
 // testing using decltype in template function.

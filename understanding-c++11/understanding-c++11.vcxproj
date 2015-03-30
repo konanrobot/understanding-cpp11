@@ -96,7 +96,6 @@
     <ClCompile Include="SFINEA.cpp" />
     <ClCompile Include="smart_pointer.cpp" />
     <ClCompile Include="strongly_typed_enum.cpp" />
-    <ClCompile Include="temp_test.cpp" />
     <ClCompile Include="thread_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -113,6 +112,16 @@
     <ClInclude Include="auto.h" />
     <ClInclude Include="constexpr.h" />
     <ClInclude Include="decltype.h" />
+    <ClInclude Include="include\gtest\gtest-death-test.h" />
+    <ClInclude Include="include\gtest\gtest-message.h" />
+    <ClInclude Include="include\gtest\gtest-param-test.h" />
+    <ClInclude Include="include\gtest\gtest-printers.h" />
+    <ClInclude Include="include\gtest\gtest-spi.h" />
+    <ClInclude Include="include\gtest\gtest-test-part.h" />
+    <ClInclude Include="include\gtest\gtest-typed-test.h" />
+    <ClInclude Include="include\gtest\gtest.h" />
+    <ClInclude Include="include\gtest\gtest_pred_impl.h" />
+    <ClInclude Include="include\gtest\gtest_prod.h" />
     <ClInclude Include="inline_namespace.h" />
     <ClInclude Include="lambda_test.h" />
     <ClInclude Include="messi.h" />
@@ -133,7 +142,6 @@
     <ClInclude Include="thread_test.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="todo_next.h" />
     <ClInclude Include="trailing_return_type.h" />
     <ClInclude Include="tuple_test.h" />
     <ClInclude Include="unicode_support.h" />
@@ -141,6 +149,9 @@
     <ClInclude Include="user_define_literal.h" />
     <ClInclude Include="using_vs_typedef.h" />
     <ClInclude Include="variadic_template.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\gtest\gtest-param-test.h.pump" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

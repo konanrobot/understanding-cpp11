@@ -2,11 +2,12 @@
 #pragma once
 #else
 _Pragma("once")
-#endif // WIN32
+#endif // _MSC_VER
 
-#include "messi.h"
+#include "inc.h"
+NS_BEGIN(elloop)
+NS_BEGIN(lambda_test)
 
-NS_ELLOOP_BEGIN
 /*
 lambda formula:
 [capture](param) [mutable] ->return_type { body; }
@@ -52,4 +53,5 @@ public:
     }
 };
 
-NS_ELLOOP_END
+NS_END(lambda_test)
+NS_END(elloop)

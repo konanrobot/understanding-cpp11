@@ -1,6 +1,6 @@
 #include "thread_test.h"
 
-#ifndef WIN32
+#ifndef _MSC_VER
 #include <unistd.h>
 #endif
 #include <atomic>

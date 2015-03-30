@@ -15,7 +15,7 @@ void testNoexcept() { }
 
 Compatibility * Compatibility::run() {
 
-#ifdef WIN32
+#ifdef _MSC_VER
 	LOGD("in function : %s\n", __FUNCTION__);
 #else
 	LOGD("in function : %s\n", __func__);
@@ -44,7 +44,7 @@ void testC99Macro() {
 
   // psln(__STDC_HOSTED__);
   
-#ifndef WIN32
+#ifndef _MSC_VER
   LOGD("Standard C: %d\n", __STDC__);
 #endif
   // psln(__STDC__);

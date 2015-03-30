@@ -5,8 +5,12 @@ NS_ELLOOP_BEGIN
 
 #ifdef _MSC_VER
 #else
-Person operator "" _person(const char * name, int age) {
-    return Person(name, age);
+Person operator "" _person(const char * data, unsigned int len) {
+	// just a demo, no real meaning.
+	Person p;
+	p.setName(data);
+	p.setAge(len);
+    return p;
 }
 #endif
 
@@ -31,6 +35,18 @@ TEST(UserDefineLiteral, Construct) {
     EXPECT_EQ(0, strcmp(p.name(), p2.name()));
 
 }
+
+void takePersion(Person p)
+{
+
+}
+TEST(UserDefineLiteral, UsingLiteralConstruct) {
+#ifdef _MSC_VER
+#else
+	takePersion("Tom"_person);
+#endif
+}
+
 
 
 NS_ELLOOP_END
