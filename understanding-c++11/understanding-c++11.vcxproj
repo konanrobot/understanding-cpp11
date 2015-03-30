@@ -83,6 +83,7 @@
     <ClCompile Include="attribute.cpp" />
     <ClCompile Include="auto.cpp" />
     <ClCompile Include="compatibility.cpp" />
+    <ClCompile Include="constexpr.cpp" />
     <ClCompile Include="constructor_test.cpp" />
     <ClCompile Include="decltype.cpp" />
     <ClCompile Include="initializer_test.cpp" />
@@ -110,6 +111,7 @@
     <ClInclude Include="alignof_alignas.h" />
     <ClInclude Include="attribute.h" />
     <ClInclude Include="auto.h" />
+    <ClInclude Include="constexpr.h" />
     <ClInclude Include="decltype.h" />
     <ClInclude Include="inline_namespace.h" />
     <ClInclude Include="lambda_test.h" />

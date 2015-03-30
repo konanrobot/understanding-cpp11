@@ -71,6 +71,9 @@
     <ClCompile Include="rvalue_refrence_and_move_constructor.cpp">
       <Filter>c++11</Filter>
     </ClCompile>
+    <ClCompile Include="constexpr.cpp">
+      <Filter>c++11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc.h">
@@ -154,6 +157,9 @@
       <Filter>c++11</Filter>
     </ClInclude>
     <ClInclude Include="rvalue_refrence_and_move_constructor.h">
+      <Filter>c++11</Filter>
+    </ClInclude>
+    <ClInclude Include="constexpr.h">
       <Filter>c++11</Filter>
     </ClInclude>
   </ItemGroup>

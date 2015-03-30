@@ -23,8 +23,10 @@ NS_BEGIN( rvalue_refrence_and_move_constructor )
 // 1. is_rvalue_reference
 // 2. is_lvalue_reference
 
-// ------------------ std::move ------------------
+// ------------------ std::move<T> & std::forward<T> ------------------
 // std::move is equal to operation: static_cast<T&&>(lvalue)
+// std::forward has the same function with std::move, like an alias of move, but
+// is specially used for template function forwarding params.
 // 强制转换为右值，move(x) 将会调用x的移动构造函数，被转化的x并不会立即被析构，所以
 // 注意这个问题，参考 TEST(RValueReference, MoveConstructorTest)
 
@@ -209,10 +211,37 @@ void targetFunction(const int && m);
 void targetFunction(const int & m);
 
 // template function decide the type of t is simple:
-// 1. iAmForwarding's param is lvalue_reference -> template param type: T&
-// 2. iAmForwarding's param is rvalue_reference -> template param type : T&&
+// 1. forwarding's param is lvalue_reference -> template param type: T&
+// 2. forwarding's param is rvalue_reference -> template param type : T&&
 template <typename T>
-void iAmForwarding(T&& t) {
+void forwarding(T&& t) {
+	// QUESTION 1: why not use forwarding(T t)
+	// key: that will become a copy semantic, pass by value.
+
+	// QUESTION 2: figure out  
+	// 
+	// int a;
+	// forwarding(a);
+	// 
+	// why std::is_lvalue_reference<T&&>::value == 1 ?
+	// int&& fail to bind with a ? so becomes a int& instead??
+	bool same = std::is_same<int&, T&&>::value;  // same is true in vs2013.
+
+	// AND
+	// fowarding(move(a)); T is int&&
+	// so forwarding(int&& && t) -> forwarding(int&& t) [reference folding]
+
+	//psln(typeid(decltype(t)).name());
+	//psln(typeid(T).name());
+	//psln(std::is_lvalue_reference<T&&>::value);
+	//psln(std::is_rvalue_reference<decltype(t)>::value);
+	//targetFunction(std::forward<T>(t));
+
+	// NOTICE: 能接受右值的右值引用本身是个左值, 即t是个左值(即使传递进来的确实是个右值)
+	// 这样直接传递给targetFunction, 就会丢失原来的左右值属性，变成左值引用
+	// targetFunction(t);
+
+	// RIGHT WAY: forward会保持左右值属性.
 	targetFunction(std::forward<T>(t));
 }
 

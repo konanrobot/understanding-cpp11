@@ -108,7 +108,7 @@ void targetFunction(const int && m) { LOGD("const rvalue reference target\n"); }
 void targetFunction(const int & m) { LOGD("const lvalue reference target\n"); }
 /*
 template <typename T>
-void iAmForwarding(T&& t) {
+void forwarding(T&& t) {
 	targetFunction(std::forward<T>(t));
 }
 */
@@ -119,10 +119,10 @@ TEST(RValueReference, PerfectForward) {
 	const int c = 1;
 	const int d = 0;
 
-	iAmForwarding(a);
-	iAmForwarding(std::move(b));
-	iAmForwarding(c);
-	iAmForwarding(std::move(d));
+	forwarding(a);
+	forwarding(std::move(b));
+	forwarding(c);
+	forwarding(std::move(d));
 
 }
 
