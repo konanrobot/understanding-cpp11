@@ -136,6 +136,7 @@
     <ClInclude Include="todo_next.h" />
     <ClInclude Include="trailing_return_type.h" />
     <ClInclude Include="tuple_test.h" />
+    <ClInclude Include="unicode_support.h" />
     <ClInclude Include="unlimited_union.h" />
     <ClInclude Include="user_define_literal.h" />
     <ClInclude Include="using_vs_typedef.h" />
