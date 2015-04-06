@@ -1,5 +1,5 @@
 // memory leak check.
-#ifdef _MSC_VER && _DEBUG
+#if defined(_MSC_VER) && defined(_DEBUG)
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
@@ -28,7 +28,7 @@ void dummyExitFunction() {
 
 int main(int argc, char** argv) {
 
-#ifdef _MSC_VER && _DEBUG
+#if defined(_MSC_VER) && defined(_DEBUG)
 	// make program stop when debug.
 	atexit(dummyExitFunction);
 
