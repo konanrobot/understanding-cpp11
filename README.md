@@ -21,7 +21,7 @@ c++ programming examples using c++11. Partly use the gtest framework.
 此外，较早提交的文件使用的是自己写的一个小的测试框架，基类叫`Messi`, 待测试的类都继承`class Messi`,并且实现其`run`方法。测试的启动点在main.cpp里面的
 `ELLOOP_TEST`宏。
 内存泄露检查使用了vs自带的`crtdbg`。详见main.cpp.
-![Memory Check](http://7xi3zl.com1.z0.glb.clouddn.com/memroy_check.png "Memory Check")
+![Memory Check](http://7xi3zl.com1.z0.glb.clouddn.com/memory_leak_check.png "Memory Check")
 
 #License
 Files under /include/gtest/ and /libs/gtestd.lib is copied and build from Google's unit test framework - gtest.
